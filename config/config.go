@@ -12,8 +12,8 @@ type EnvVars struct {
 	PORT         string `mapstructure:"PORT"`
 }
 
-func LoadConfig() (config EnvVars, err error) {
-	err = godotenv.Load()
+func LoadConfig() (EnvVars, error) {
+	err := godotenv.Load()
 	if err != nil {
 		return EnvVars{}, err
 	}
