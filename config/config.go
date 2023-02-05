@@ -13,7 +13,10 @@ type EnvVars struct {
 }
 
 func LoadConfig() (config EnvVars, err error) {
-	godotenv.Load()
+	err = godotenv.Load()
+	if err != nil {
+		return EnvVars{}, err
+	}
 	return EnvVars{
 		MONGODB_URI:  os.Getenv("MONGODB_URI"),
 		MONGODB_NAME: os.Getenv("MONGODB_NAME"),
